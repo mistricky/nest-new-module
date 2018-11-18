@@ -59,7 +59,7 @@ func entryQuestion(Questions map[string]ModuleContent){
 	input := bufio.NewScanner(os.Stdin)
 
 	for q := range Questions {
-		fmt.Printf("%s: ", q)
+		fmt.Printf("%s(true): ", q)
 		input.Scan()
 
 		if v := input.Text(); v != "" {
@@ -125,11 +125,11 @@ func main(){
 	},"\n"), fn)
 
 	Questions := map[string]ModuleContent{
-		"module(true)": defaultModuleContent(moduleContent),
-		"service(true)": defaultModuleContent(serviceContent),
-		"index(true)": defaultModuleContent(""),
-		"entity(true)": defaultModuleContent(entityContent),
-		"controller(true)": defaultModuleContent(controllerContent),
+		"module": defaultModuleContent(moduleContent),
+		"service": defaultModuleContent(serviceContent),
+		"index": defaultModuleContent(""),
+		"entity": defaultModuleContent(entityContent),
+		"controller": defaultModuleContent(controllerContent),
 	}
 
 	entryQuestion(Questions)
