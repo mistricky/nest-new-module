@@ -75,7 +75,7 @@ func entryQuestion(Questions map[string]ModuleContent){
 	}
 }
 
-func builder(Questions map[string]ModuleContent){
+func builder(Questions map[string]ModuleContent, filename string){
 	m := Module{
 		"",
 		"",
@@ -83,10 +83,14 @@ func builder(Questions map[string]ModuleContent){
 
 	// traverse questions for create file
 	for moduleName, moduleContent := range Questions {
-		filename := strings.Join([]string{*filename, moduleName, "ts"}, ".")
+		filename := strings.Join([]string{filename, moduleName, "ts"}, ".")
 
 		m.name = filename
 		m.content = moduleContent.content
+
+		if moduleName == "index" {
+			m.name = strings.Join([]string{moduleName, "ts"}, ".")
+		}
 
 		if moduleContent.isCreate {
 			m.writeString()
@@ -133,5 +137,5 @@ func main(){
 	}
 
 	entryQuestion(Questions)
-	builder(Questions)
+	builder(Questions, fn)
 }
