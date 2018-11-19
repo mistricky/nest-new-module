@@ -36,7 +36,7 @@ func contentFactory(content string, fn string) string {
 
 var (
 
-	filename = flag.String("n", "app", "-n [name]")
+	filename = flag.String("n", "app", "module name")
 )
 
 func checkErr(err error){
