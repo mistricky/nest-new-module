@@ -9,6 +9,8 @@ import (
 	"strings"
 )
 
+var filename = flag.String("n", "app", "module name")
+
 type Module struct {
 	name string
 	content string
@@ -31,13 +33,19 @@ func toUpperCaseAtOne(str string) string {
 }
 
 func contentFactory(content string, fn string) string {
-	return fmt.Sprintf(content, toUpperCaseAtOne(fn))
+	return fmt.Sprintf(content, processFileName(fn))
 }
 
-var (
+func processFileName(filename string) string {
+	// skewer
+	parts := strings.Split(filename, "-")
 
-	filename = flag.String("n", "app", "module name")
-)
+	for i := range parts {
+		parts[i] = toUpperCaseAtOne(parts[i])
+	}
+
+	return strings.Join(parts, "")
+}
 
 func checkErr(err error){
 	if err != nil {
