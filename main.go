@@ -105,25 +105,33 @@ func main(){
 	fn := *filename
 
 	moduleContent := contentFactory(strings.Join([]string{
-		"@Module(",
-		"imports:[],",
-		"providers:[],",
-		"controllers:[],",
-		")",
+		"import {Module} from '@nestjs/common';",
+		"",
+		"@Module({",
+		"  imports:[],",
+		"  providers:[],",
+		"  controllers:[],",
+		"})",
 		"export class %sModule { }",
 	}, "\n"), fn)
 
 	serviceContent := contentFactory(strings.Join([]string{
+		"import {Injectable} from '@nestjs/common';",
+		"",
 		"@Injectable()",
 		"export class %sService { }",
 	},"\n"), fn)
 
 	entityContent := contentFactory(strings.Join([]string{
+		"import {Entity} from 'typeorm';",
+		"",
 		"@Entity()",
 		"export class %s { }",
 	},"\n"), fn)
 
 	controllerContent := contentFactory(strings.Join([]string{
+		"import {Module} from '@nestjs/common';",
+		"",
 		"@Controller('')",
 		"export class %sController { }",
 	},"\n"), fn)
