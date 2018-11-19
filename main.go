@@ -138,7 +138,7 @@ func main(){
 	},"\n"), fn)
 
 	controllerContent := contentFactory(strings.Join([]string{
-		"import {Module} from '@nestjs/common';",
+		"import {Controller} from '@nestjs/common';",
 		"",
 		"@Controller('')",
 		"export class %sController { }",
