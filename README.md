@@ -2,7 +2,7 @@
 
 Automate the creation of modules
 
-# Help
+# Usage
 
 ![help](https://github.com/HaoDaWang/nest-new-module/blob/master/doc/help.png)
 
